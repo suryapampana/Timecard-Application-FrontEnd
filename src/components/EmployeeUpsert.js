@@ -44,7 +44,7 @@ export function EmployeeUpsert() {
 
     // A1 sucess
     setSuccessOperation(true);
-    setTimeout(() => setSuccessOperation(false), 5000);
+    setTimeout(() => setSuccessOperation(false), 2000);
 
     // A2: navigate to another page
     // history.push("/list-employee");
