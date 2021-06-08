@@ -55,33 +55,37 @@ export function EmployeeList() {
           <table className="table">
             <thead className="thead-dark">
               <tr>
-                <th scope="col">#ID</th>
-                <th scope="col">USERNAME</th>
+                <th scope="col">#EMPLOYEE-ID</th>
+                <th scope="col">EMPLOYEE-NAME</th>
+                <th scope="col">EMPLOYEE-ROLE</th>
+                <th scope="col">EMPLOYEE-EMAIL</th>
+                <th scope="col">PHONE-NUMBER</th>
+                <th scope="col">USER-ID</th>
                 <th scope="col">PASSWORD</th>
-                <th scope="col">EMAIL</th>
-                <th scope="col">MOBILE</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
               {[...state.employee.list].map((item, index) => (
                 <tr key={index}>
-                  <th scope="row">{item.id}</th>
-                  <td>{item.userName}</td>
-                  <td>{"********"}</td>
+                  <th scope="row">{item.employeeId}</th>
+                  <td>{item.employeeName}</td>
+                  <td>{item.employeeRole}</td>
                   <td>{"****@gmail.com"}</td>
-                  <td>{item.mobile}</td>
+                  <td>{item.phoneNumber}</td>
+                  <td>{item.userId}</td>
+                  <td>{"********"}</td>
                   <td>
                     <input
                       type="button"
-                      onClick={() => getEmployeeById(item)}
+                      onClick={() => getEmployeeById(item, index)}
                       value="Detail"
                       className="btn btn-link"
                     />
                     /
                     <input
                       type="button"
-                      onClick={() => updateEmployee(item)}
+                      onClick={() => updateEmployee(item, index)}
                       value="Edit"
                       className="btn btn-link"
                     />

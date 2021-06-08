@@ -2,7 +2,7 @@ const initState = {
   list: [],
 
   refemp: {},
-  sampleList: ["Delhi", "Kolkata", "Chennai", "Mumbai"],
+  sampleList: ["Delhi", "Kolkata", "Chennai", "Mumbai", "Agra", "Bamgalore"],
 };
 
 // ACTION TYPES
@@ -22,7 +22,7 @@ export function createEmployeeAction(payload) {
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
     const url = "http://localhost:8080/api/employee/";
-    const requestBody = { ...payload, age: 30 };
+    const requestBody = { ...payload };
 
     // HTTP Client
     await fetch(url, {
@@ -40,8 +40,8 @@ export function updateEmployeeAction(payload) {
   // return { type: EMPLOYEE_UPDATE, payload: payload };
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = `http://localhost:8080/api/employee/${payload.id}`;
-    const requestBody = { ...payload, age: 25 };
+    const url = `http://localhost:8080/api/employee/${payload.employeeId}`;
+    const requestBody = { ...payload };
 
     await fetch(url, {
       method: "PUT",
@@ -59,7 +59,7 @@ export function deleteEmployeeAction(payload) {
 
   // redux thunk
   return async (dispatch) => {
-    const url = `http://localhost:8080/api/employee/${payload.id}`;
+    const url = `http://localhost:8080/api/employee/${payload.employeeId}`;
     await fetch(url, { method: "DELETE" });
 
     // update the ui.
@@ -88,7 +88,7 @@ export function getAllEmployeeAction(payload) {
 export function getByIdEmployeeAction(payload) {
   // return { type: EMPLOYEE_GET_BY_ID, payload: payload };
   return async (dispatch) => {
-    const url = `http://localhost:8080/api/employee/${payload.id}`;
+    const url = `http://localhost:8080/api/employee/${payload.employeeId}`;
     const response = await fetch(url);
     const employeeObj = await response.json();
 
