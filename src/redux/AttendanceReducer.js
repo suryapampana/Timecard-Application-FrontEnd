@@ -21,9 +21,9 @@ export function addAttendanceAction(payload) {
   // MAKE SURE redux-thunk is installed.
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "http://localhost:8080/api/attendance/employee.id";
-    const requestBody = { ...payload };
+    const url = `http://localhost:8080/api/attendance/${payload.employeeId}`;
 
+    const requestBody = { ...payload };
     // HTTP Client
     await fetch(url, {
       method: "POST",

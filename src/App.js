@@ -3,6 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { AttendanceUpsert } from "./components/AttendanceUpsert";
 import { AttendanceList } from "./components/AttendanceList";
+import { EmployeeUpsert } from "./components/EmployeeUpsert";
+import { EmployeeList } from "./components/EmployeeList";
+import { LeaveUpsert } from "./components/LeaveUpsert";
+import { LeaveList } from "./components/LeaveList";
+
 import { Nav, Navbar } from "react-bootstrap";
 import { AppNavBar } from "./common/AppNavBar";
 
@@ -12,7 +17,15 @@ function App() {
       <AppNavBar />
 
       <Switch>
-        <Route path="/create-attendance">
+        <Route path="/create-employee">
+          <EmployeeUpsert />
+        </Route>
+
+        <Route path="/list-employee">
+          <EmployeeList />
+        </Route>
+
+        <Route path="/add-attendance">
           <AttendanceUpsert />
         </Route>
 
@@ -20,8 +33,16 @@ function App() {
           <AttendanceList />
         </Route>
 
+        <Route path="/apply-leave">
+          <LeaveUpsert />
+        </Route>
+
+        <Route path="/list-leave">
+          <LeaveList />
+        </Route>
+
         <Route exact path="/">
-          <AttendanceList />
+          <EmployeeList />
         </Route>
       </Switch>
     </Router>

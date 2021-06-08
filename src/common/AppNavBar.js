@@ -17,7 +17,18 @@ export function AppNavBar() {
         <Nav className="ml-auto">
           <Nav.Link
             as={Link}
-            to="/create-attendance"
+            to="/create-employee"
+            className="text-primary pl-2"
+          >
+            Create Employee
+          </Nav.Link>
+          <Nav.Link as={Link} to="/list-employee" className="text-primary pl-2">
+            List Employee
+          </Nav.Link>
+
+          <Nav.Link
+            as={Link}
+            to="/add-attendance"
             className="text-primary pl-2"
           >
             Add Attendance
@@ -28,6 +39,13 @@ export function AppNavBar() {
             className="text-primary pl-2"
           >
             List Attendance
+          </Nav.Link>
+
+          <Nav.Link as={Link} to="/apply-leave" className="text-primary pl-2">
+            Apply Leave
+          </Nav.Link>
+          <Nav.Link as={Link} to="/list-leave" className="text-primary pl-2">
+            List Leave
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
