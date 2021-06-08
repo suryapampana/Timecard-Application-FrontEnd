@@ -1,39 +1,43 @@
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRefEmployee } from "../redux/EmployeeReducer";
+import { updateRefAttendance } from "../redux/AttendanceReducer";
 
-export function EmployeeModal() {
+export function AttendanceModal() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const updateRefObj = () => {
-    dispatch(updateRefEmployee({}));
+    dispatch(updateRefAttendance({}));
   };
 
   return (
     <Modal
-      show={state.employee.refemp.employeeId}
+      show={state.attendance.refatt.attendanceId}
       onHide={() => updateRefObj()}
     >
       <Modal.Header closeButton>
-        <Modal.Title>Hello, {state.employee.refemp.employeeName}</Modal.Title>
+        <Modal.Title>Hello, {state.attendance.refatt.employee}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ListGroup>
           <ListGroup.Item>
-            EMPLOYEE NAME - {state.employee.refemp.employeeName}
+            EMPLOYEE - {state.attendance.refatt.employee}
           </ListGroup.Item>
           <ListGroup.Item>
-            EMPLOYEE ROLE - {state.employee.refemp.employeeRole}
-          </ListGroup.Item>
-          <ListGroup.Item>EMPLOYEE EMAIL - {"******@gmail.com"}</ListGroup.Item>
-          <ListGroup.Item>
-            PHONE NUMBER - {state.employee.refemp.phoneNumber}
+            IN TIME - {state.attendance.refatt.inTime}
           </ListGroup.Item>
           <ListGroup.Item>
-            USER ID - {state.employee.refemp.userId}
+            OFF TIME - {state.attendance.refatt.offTime}
           </ListGroup.Item>
-          <ListGroup.Item>PASSWORD - {"*********"}</ListGroup.Item>
+          <ListGroup.Item>
+            FROM DATE - {state.attendance.refatt.fromDate}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            TO DATE - {state.attendance.refatt.toDate}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            STATUS - {state.attendance.refatt.status}
+          </ListGroup.Item>
         </ListGroup>
       </Modal.Body>
       <Modal.Footer>
