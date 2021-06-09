@@ -60,7 +60,7 @@ export function TimecardUpsert() {
   const updateTimecard = () => {
     dispatch(
       updateTimecardAction({
-        attendanceId: state.timecard.reftc.timeCardId,
+        timeCardId: state.timecard.reftc.timeCardId,
         employeeId,
         date,
         timeEntry,

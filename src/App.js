@@ -9,6 +9,8 @@ import { LeaveUpsert } from "./components/leave/LeaveUpsert";
 import { LeaveList } from "./components/leave/LeaveList";
 import { TimecardUpsert } from "./components/timecard/TimecardUpsert";
 import { TimecardList } from "./components/timecard/TimecardList";
+import { SupervisorUpsert } from "./components/supervisor/SupervisorUpsert";
+import { SupervisorList } from "./components/supervisor/SupervisorList";
 
 import { Nav, Navbar } from "react-bootstrap";
 import { AppNavBar } from "./common/AppNavBar";
@@ -25,6 +27,14 @@ function App() {
 
         <Route path="/list-employee">
           <EmployeeList />
+        </Route>
+
+        <Route path="/create-supervisor">
+          <SupervisorUpsert />
+        </Route>
+
+        <Route path="/list-supervisor">
+          <SupervisorList />
         </Route>
 
         <Route path="/add-attendance">

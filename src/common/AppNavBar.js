@@ -28,6 +28,21 @@ export function AppNavBar() {
 
           <Nav.Link
             as={Link}
+            to="/create-supervisor"
+            className="text-primary pl-2"
+          >
+            Create Supervisor
+          </Nav.Link>
+          <Nav.Link
+            as={Link}
+            to="/list-supervisor"
+            className="text-primary pl-2"
+          >
+            List Supervisor
+          </Nav.Link>
+
+          <Nav.Link
+            as={Link}
             to="/add-attendance"
             className="text-primary pl-2"
           >
