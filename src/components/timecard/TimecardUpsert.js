@@ -42,57 +42,40 @@ export function TimecardUpsert() {
         status,
       })
     );
-    console.log(formEL);
-    console.log(formEL.current.checkValidity());
 
-    if (formEL.current.checkValidity() === false) {
-      // hanlde the false case
-      e.preventDefault();
-      e.stopPropagation();
-      formEL.current.classList.add("was-validated");
-    } else {
-      // you can write custom valiadation logic here.
-      // username :: Speical Character validation
-      const re = /^[a-z0-9_\.]+$/;
-      if (!re.test(employeeId)) {
-        alert("Username Vlidation Fails");
-        return;
-      }
+    // A1 sucess
+    setSuccessOperation(true);
+    setTimeout(() => setSuccessOperation(false), 5000);
 
-      // A1 sucess
-      setSuccessOperation(true);
-      setTimeout(() => setSuccessOperation(false), 5000);
+    // A2: navigate to another page
+    // history.push("/list-employee");
 
-      // A2: navigate to another page
-      // history.push("/list-employee");
+    // reset the form
+    setEmployeeId("");
+    setDate("");
+    setTimeEntry("");
+    setTimeExit("");
+    setStatus("");
+  };
 
-      // reset the form
-      setEmployeeId("");
-      setDate("");
-      setTimeEntry("");
-      setTimeExit("");
-      setStatus("");
-    }
+  const updateTimecard = () => {
+    dispatch(
+      updateTimecardAction({
+        attendanceId: state.timecard.reftc.timeCardId,
+        employeeId,
+        date,
+        timeEntry,
+        timeExit,
+        status,
+      })
+    );
 
-    const updateTimecard = () => {
-      dispatch(
-        updateTimecardAction({
-          timeCardId: state.timecard.reftc.timeCardId,
-          employeeId,
-          date,
-          timeEntry,
-          timeExit,
-          status,
-        })
-      );
-
-      // reset the form
-      setEmployeeId("");
-      setDate("");
-      setTimeEntry("");
-      setTimeExit("");
-      setStatus("");
-    };
+    // reset the form
+    setEmployeeId("");
+    setDate("");
+    setTimeEntry("");
+    setTimeExit("");
+    setStatus("");
   };
 
   return (
@@ -100,7 +83,7 @@ export function TimecardUpsert() {
       <div className="row">
         <div className="col-3 col-md-3 d-none d-md-block"></div>
         <div className="col-12 col-md-6">
-          <h3 className="alert alert-primary text-secondary mb-1">
+          <h3 className="alert alert-primary text-secondary">
             {state.timecard.reftc.timeCardId
               ? "Update Timecard"
               : "Add Timecard"}
@@ -138,7 +121,7 @@ export function TimecardUpsert() {
               />
             </div>
 
-            <div className="mb-1 form-date">
+            <div className="mb-1 form-group">
               <label> Entry-Time: </label>
               <input
                 type="time"
@@ -150,7 +133,7 @@ export function TimecardUpsert() {
               />
             </div>
 
-            <div className="mb-1">
+            <div className="mb-1 form-group">
               <label> Exit-Time: </label>
               <input
                 type="time"
