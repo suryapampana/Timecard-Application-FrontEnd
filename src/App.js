@@ -7,6 +7,8 @@ import { EmployeeUpsert } from "./components/employee/EmployeeUpsert";
 import { EmployeeList } from "./components/employee/EmployeeList";
 import { LeaveUpsert } from "./components/leave/LeaveUpsert";
 import { LeaveList } from "./components/leave/LeaveList";
+import { TimecardUpsert } from "./components/timecard/TimecardUpsert";
+import { TimecardList } from "./components/timecard/TimecardList";
 
 import { Nav, Navbar } from "react-bootstrap";
 import { AppNavBar } from "./common/AppNavBar";
@@ -39,6 +41,14 @@ function App() {
 
         <Route path="/list-leave">
           <LeaveList />
+        </Route>
+
+        <Route path="/add-timecard">
+          <TimecardUpsert />
+        </Route>
+
+        <Route path="/list-timecard">
+          <TimecardList />
         </Route>
 
         <Route exact path="/">

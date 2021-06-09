@@ -21,7 +21,7 @@ export function addAttendanceAction(payload) {
   // MAKE SURE redux-thunk is installed.
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = `http://localhost:8080/api/attendance/${payload.employeeId}`;
+    const url = `http://localhost:8080/api/attendance/saveattendance/${payload.employeeId}`;
 
     const requestBody = { ...payload };
     // HTTP Client
@@ -40,7 +40,7 @@ export function updateAttendanceAction(payload) {
   // return { type: ATTENDANCE_UPDATE, payload: payload };
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = `http://localhost:8080/api/attendance/${payload.attendanceId}`;
+    const url = `http://localhost:8080/api/attendance/update/${payload.attendanceId}`;
     const requestBody = { ...payload };
 
     await fetch(url, {
@@ -59,7 +59,7 @@ export function deleteAttendanceAction(payload) {
 
   // redux thunk
   return async (dispatch) => {
-    const url = `http://localhost:8080/api/attendance/${payload.attendanceId}`;
+    const url = `http://localhost:8080/api/attendance/delete/${payload.attendanceId}`;
     await fetch(url, { method: "DELETE" });
 
     // update the ui.
@@ -73,7 +73,7 @@ export function getAllAttendanceAction(payload) {
   // API CALL/BACKEND CALL / REDUX-THUNK IS THERE
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "http://localhost:8080/api/attendance/";
+    const url = "http://localhost:8080/api/attendance/all";
 
     // HTTP Client / POSTMAN / SWAGGER
     const response = await fetch(url);

@@ -6,11 +6,13 @@ import thunk from "redux-thunk";
 import { AttendanceReducer } from "./AttendanceReducer";
 import { EmployeeReducer } from "./EmployeeReducer";
 import { LeaveReducer } from "./LeaveReducer";
+import { TimecardReducer } from "./TimecardReducer";
 
 const rootReducer = combineReducers({
   employee: EmployeeReducer,
   attendance: AttendanceReducer,
   leave: LeaveReducer,
+  timecard: TimecardReducer,
   //depart : DepartRducer,
   //vechil: VechuileReucer
 });

@@ -21,7 +21,7 @@ export function applyLeaveAction(payload) {
   // MAKE SURE redux-thunk is installed.
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = `http://localhost:8080/api/leave/${payload.employeeId}`;
+    const url = `http://localhost:8080/api/leave/apply/${payload.employeeId}`;
     const requestBody = { ...payload };
 
     // HTTP Client
@@ -40,7 +40,7 @@ export function updateLeaveAction(payload) {
   // return { type: LEAVE_UPDATE, payload: payload };
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = `http://localhost:8080/api/leave/${payload.leaveId}`;
+    const url = `http://localhost:8080/api/leave/update/${payload.leaveId}`;
     const requestBody = { ...payload };
 
     await fetch(url, {
@@ -73,7 +73,7 @@ export function getAllLeaveAction(payload) {
   // API CALL/BACKEND CALL / REDUX-THUNK IS THERE
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "http://localhost:8080/api/leave/";
+    const url = "http://localhost:8080/api/leave/all";
 
     // HTTP Client / POSTMAN / SWAGGER
     const response = await fetch(url);

@@ -11,7 +11,7 @@ export function LeaveModal() {
   };
 
   return (
-    <Modal show={state.leave.reflev.leaveid} onHide={() => updateRefObj()}>
+    <Modal show={state.leave.reflev.leaveId} onHide={() => updateRefObj()}>
       <Modal.Header closeButton>
         <Modal.Title>Hello, {state.leave.reflev.employeeId}</Modal.Title>
       </Modal.Header>

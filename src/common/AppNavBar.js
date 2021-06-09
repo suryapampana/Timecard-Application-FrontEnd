@@ -47,6 +47,13 @@ export function AppNavBar() {
           <Nav.Link as={Link} to="/list-leave" className="text-primary pl-2">
             List Leave
           </Nav.Link>
+
+          <Nav.Link as={Link} to="/add-timecard" className="text-primary pl-2">
+            Add Timecard
+          </Nav.Link>
+          <Nav.Link as={Link} to="/list-timecard" className="text-primary pl-2">
+            List Timecard
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
