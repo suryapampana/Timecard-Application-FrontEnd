@@ -41,7 +41,7 @@ export function LeaveUpsert() {
     setTimeout(() => setSuccessOperation(false), 5000);
 
     // A2: navigate to another page
-    // history.push("/list-employee");
+    //history.push("/list-leave");
 
     // reset the form
     setEmployeeId("");

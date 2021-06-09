@@ -174,7 +174,6 @@ export function EmployeeUpsert() {
               onChange={(e) => updatePhoneNumber(e)}
               className="form-control"
               placeholder="Enter Mobile"
-              min="9999999999"
               max="9999999999"
               required
             />
