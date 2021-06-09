@@ -46,7 +46,7 @@ export function TimecardList() {
       <div className="row">
         <div className="col-3 col-md-2 d-none d-md-block"></div>
         <div className="col-12 col-md-8">
-          <h3 className="alert alert-secondary">Timecard List</h3>
+          <h3 className="alert alert-primary text-secondary">Timecard List</h3>
 
           {successOperation && (
             <div className="alert alert-success">Opeation Success</div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
 export function SupervisorUpsert() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const formEL = useRef();
   const state = useSelector((state) => state);
   console.log(state);
 
@@ -43,30 +44,48 @@ export function SupervisorUpsert() {
       password
     );
 
-    // THIS IS REDUX ACTION CALLING
-    dispatch(
-      createSupervisorAction({
-        supervisorName,
-        supervisorEmail,
-        supervisorNumber,
-        userId,
-        password,
-      })
-    );
+    console.log(formEL);
+    console.log(formEL.current.checkValidity());
 
-    // A1 sucess
-    setSuccessOperation(true);
-    setTimeout(() => setSuccessOperation(false), 5000);
+    if (formEL.current.checkValidity() === false) {
+      // hanlde the false case
+      e.preventDefault();
+      e.stopPropagation();
+      formEL.current.classList.add("was-validated");
+    } else {
+      // you can write custom valiadation logic here.
+      // username :: Speical Character validation
+      const re = /^[a-z0-9_\.]+$/;
+      if (!re.test(userId)) {
+        alert("Username Vlidation Fails");
+        return;
+      }
 
-    // A2: navigate to another page
-    // history.push("/list-employee");
+      // THIS IS REDUX ACTION CALLING
+      dispatch(
+        createSupervisorAction({
+          supervisorName,
+          supervisorEmail,
+          supervisorNumber,
+          userId,
+          password,
+        })
+      );
 
-    // reset the form
-    setSupervisorName("");
-    setSupervisorEmail("");
-    setSupervisorNumber("");
-    setUserId("");
-    setPassword("");
+      // A1 sucess
+      setSuccessOperation(true);
+      setTimeout(() => setSuccessOperation(false), 5000);
+
+      // A2: navigate to another page
+      // history.push("/list-employee");
+
+      // reset the form
+      setSupervisorName("");
+      setSupervisorEmail("");
+      setSupervisorNumber("");
+      setUserId("");
+      setPassword("");
+    }
   };
 
   const updateSupervisor = () => {
@@ -90,89 +109,107 @@ export function SupervisorUpsert() {
   };
 
   return (
-    <div className="row">
-      <div className="col-3 col-md-3 d-none d-md-block"></div>
-      <div className="col-12 col-md-6">
-        <h3 className="alert alert-secondary">
-          {state.supervisor.refsup.supervisorId
-            ? "Update Supervisor"
-            : "Create Supervisor"}
-        </h3>
+    <div className="container">
+      <div className="row">
+        <div className="col-3 col-md-3 d-none d-md-block"></div>
+        <div className="col-12 col-md-6">
+          <h3 className="alert alert-primary text-secondary">
+            {state.supervisor.refsup.supervisorId
+              ? "Update Supervisor"
+              : "Create Supervisor"}
+          </h3>
 
-        {/** BELOW THESE TWO TAGS MUST BE CONDITIOANL */}
-        {successOperation && (
-          <div className="alert alert-success">Opeation Success</div>
-        )}
-
-        <div className="mb-1">
-          <input
-            type="text"
-            value={supervisorName}
-            onChange={(e) => updateSupervisorName(e)}
-            className="form-control"
-            placeholder="Enter Supervisor Name"
-          />
-        </div>
-
-        <div className="mb-1">
-          <input
-            type="text"
-            value={supervisorEmail}
-            onChange={(e) => updateSupervisorEmail(e)}
-            className="form-control"
-            placeholder="Enter Email"
-          />
-        </div>
-
-        <div className="mb-1">
-          <input
-            type="text"
-            value={supervisorNumber}
-            onChange={(e) => updateSupervisorNumber(e)}
-            className="form-control"
-            placeholder="Enter Mobile"
-          />
-        </div>
-
-        <div className="mb-1">
-          <input
-            type="text"
-            value={userId}
-            onChange={(e) => updateUserId(e)}
-            className="form-control"
-            placeholder="Enter UserId"
-          />
-        </div>
-
-        <div className="mb-1">
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => updatePassword(e)}
-            className="form-control"
-            placeholder="Enter Password"
-          />
-        </div>
-
-        <div className="mb-1">
-          {state.supervisor.refsup.supervisorId ? (
-            <input
-              type="button"
-              className="btn btn-secondary w-100"
-              value="Update Supervisor"
-              onClick={() => updateSupervisor()}
-            />
-          ) : (
-            <input
-              type="button"
-              className="btn btn-secondary w-100"
-              value="Add Supervisor"
-              onClick={(e) => addSupervisor(e)}
-            />
+          {/** BELOW THESE TWO TAGS MUST BE CONDITIOANL */}
+          {successOperation && (
+            <div className="alert alert-success">Supervisor Created</div>
           )}
+
+          <div className="card-body"></div>
+          <form ref={formEL} className="needs-validation" noValidate>
+            <div className="mb-1 form-group">
+              <label> Supervisor Name: </label>
+              <input
+                type="text"
+                value={supervisorName}
+                onChange={(e) => updateSupervisorName(e)}
+                className="form-control"
+                placeholder="Enter Supervisor Name"
+                required={true}
+                minLength="3"
+                maxLength="15"
+              />
+            </div>
+
+            <div className="mb-1 form-group">
+              <label> Supervisor Email: </label>
+              <input
+                type="email"
+                value={supervisorEmail}
+                onChange={(e) => updateSupervisorEmail(e)}
+                className="form-control"
+                placeholder="Enter Email"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1 form-group">
+              <label> Supervisor MobileNumber: </label>
+              <input
+                type="number"
+                value={supervisorNumber}
+                onChange={(e) => updateSupervisorNumber(e)}
+                className="form-control"
+                placeholder="Enter Mobile"
+                max="9999999999"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1 form-group">
+              <label> UserId: </label>
+              <input
+                type="text"
+                value={userId}
+                onChange={(e) => updateUserId(e)}
+                className="form-control"
+                placeholder="Enter UserId"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1 form-group">
+              <label> Password: </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => updatePassword(e)}
+                className="form-control"
+                placeholder="Enter Password"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1">
+              {state.supervisor.refsup.supervisorId ? (
+                <input
+                  type="button"
+                  className="btn btn-success w-100"
+                  value="Update Supervisor"
+                  onClick={() => updateSupervisor()}
+                />
+              ) : (
+                <input
+                  type="button"
+                  className="btn btn-success w-100"
+                  value="Add Supervisor"
+                  onClick={(e) => addSupervisor(e)}
+                />
+              )}
+            </div>
+          </form>
         </div>
+        <div className="col-3 col-md-3  d-none d-md-block"></div>
       </div>
-      <div className="col-3 col-md-3  d-none d-md-block"></div>
     </div>
   );
 }

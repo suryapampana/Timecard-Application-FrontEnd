@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
 export function TimecardUpsert() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const formEL = useRef();
   const state = useSelector((state) => state);
   console.log(state);
 
@@ -41,123 +42,147 @@ export function TimecardUpsert() {
         status,
       })
     );
+    console.log(formEL);
+    console.log(formEL.current.checkValidity());
 
-    // A1 sucess
-    setSuccessOperation(true);
-    setTimeout(() => setSuccessOperation(false), 5000);
+    if (formEL.current.checkValidity() === false) {
+      // hanlde the false case
+      e.preventDefault();
+      e.stopPropagation();
+      formEL.current.classList.add("was-validated");
+    } else {
+      // you can write custom valiadation logic here.
+      // username :: Speical Character validation
+      const re = /^[a-z0-9_\.]+$/;
+      if (!re.test(employeeId)) {
+        alert("Username Vlidation Fails");
+        return;
+      }
 
-    // A2: navigate to another page
-    // history.push("/list-employee");
+      // A1 sucess
+      setSuccessOperation(true);
+      setTimeout(() => setSuccessOperation(false), 5000);
 
-    // reset the form
-    setEmployeeId("");
-    setDate("");
-    setTimeEntry("");
-    setTimeExit("");
-    setStatus("");
-  };
+      // A2: navigate to another page
+      // history.push("/list-employee");
 
-  const updateTimecard = () => {
-    dispatch(
-      updateTimecardAction({
-        timeCardId: state.timecard.reftc.timeCardId,
-        employeeId,
-        date,
-        timeEntry,
-        timeExit,
-        status,
-      })
-    );
+      // reset the form
+      setEmployeeId("");
+      setDate("");
+      setTimeEntry("");
+      setTimeExit("");
+      setStatus("");
+    }
 
-    // reset the form
-    setEmployeeId("");
-    setDate("");
-    setTimeEntry("");
-    setTimeExit("");
-    setStatus("");
+    const updateTimecard = () => {
+      dispatch(
+        updateTimecardAction({
+          timeCardId: state.timecard.reftc.timeCardId,
+          employeeId,
+          date,
+          timeEntry,
+          timeExit,
+          status,
+        })
+      );
+
+      // reset the form
+      setEmployeeId("");
+      setDate("");
+      setTimeEntry("");
+      setTimeExit("");
+      setStatus("");
+    };
   };
 
   return (
-    <div className="row">
-      <div className="col-3 col-md-3 d-none d-md-block"></div>
-      <div className="col-12 col-md-6">
-        <h3 className="alert alert-secondary">
-          {state.timecard.reftc.timeCardId ? "Update Timecard" : "Add Timecard"}
-        </h3>
+    <div className="container">
+      <div className="row">
+        <div className="col-3 col-md-3 d-none d-md-block"></div>
+        <div className="col-12 col-md-6">
+          <h3 className="alert alert-primary text-secondary mb-1">
+            {state.timecard.reftc.timeCardId
+              ? "Update Timecard"
+              : "Add Timecard"}
+          </h3>
 
-        {/** BELOW THESE TWO TAGS MUST BE CONDITIOANL */}
-        {successOperation && (
-          <div className="alert alert-success">Opeation Success</div>
-        )}
-
-        <div className="mb-1">
-          <input
-            type="text"
-            value={employeeId}
-            onChange={(e) => updateEmployeeId(e)}
-            className="form-control"
-            placeholder="Enter Employee ID"
-          />
-        </div>
-
-        <div className="mb-1">
-          <label htmlFor="validationCustom02" className="text-secondary">
-            DATE
-          </label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => updateDate(e)}
-            className="form-control"
-            placeholder="Enter Date"
-          />
-        </div>
-
-        <div className="mb-1">
-          <label htmlFor="validationCustom02" className="text-secondary">
-            ENTRY-TIME
-          </label>
-          <input
-            type="time"
-            value={timeEntry}
-            onChange={(e) => updateTimeEntry(e)}
-            className="form-control"
-            placeholder="Enter Time Entry"
-          />
-        </div>
-
-        <div className="mb-1">
-          <label htmlFor="validationCustom02" className="text-secondary">
-            EXIT-TIME
-          </label>
-          <input
-            type="time"
-            value={timeExit}
-            onChange={(e) => updateTimeExit(e)}
-            className="form-control"
-            placeholder="Enter Time Exit"
-          />
-        </div>
-
-        <div className="mb-1">
-          {state.timecard.reftc.timeCardId ? (
-            <input
-              type="button"
-              className="btn btn-secondary w-100"
-              value="Update Timecard"
-              onClick={() => updateTimecard()}
-            />
-          ) : (
-            <input
-              type="button"
-              className="btn btn-secondary w-100"
-              value="Add Timecard"
-              onClick={(e) => addTimecard(e)}
-            />
+          {/** BELOW THESE TWO TAGS MUST BE CONDITIOANL */}
+          {successOperation && (
+            <div className="alert alert-success">TimeCard Added</div>
           )}
+
+          <div className="card-body"></div>
+
+          <form ref={formEL} className="needs-validation" noValidate>
+            <div className="mb-1 form-group">
+              <label> Employee Id: </label>
+              <input
+                type="text"
+                value={employeeId}
+                onChange={(e) => updateEmployeeId(e)}
+                className="form-control"
+                placeholder="Enter Employee ID"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1 form-group">
+              <label> Date: </label>
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => updateDate(e)}
+                className="form-control"
+                placeholder="Enter Date"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1 form-date">
+              <label> Entry-Time: </label>
+              <input
+                type="time"
+                value={timeEntry}
+                onChange={(e) => updateTimeEntry(e)}
+                className="form-control"
+                placeholder="Enter Time Entry"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1">
+              <label> Exit-Time: </label>
+              <input
+                type="time"
+                value={timeExit}
+                onChange={(e) => updateTimeExit(e)}
+                className="form-control"
+                placeholder="Enter Time Exit"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1">
+              {state.timecard.reftc.timeCardId ? (
+                <input
+                  type="button"
+                  className="btn btn-success w-100"
+                  value="Update Timecard"
+                  onClick={() => updateTimecard()}
+                />
+              ) : (
+                <input
+                  type="button"
+                  className="btn btn-success w-100"
+                  value="Add Timecard"
+                  onClick={(e) => addTimecard(e)}
+                />
+              )}
+            </div>
+          </form>
         </div>
+        <div className="col-3 col-md-3  d-none d-md-block"></div>
       </div>
-      <div className="col-3 col-md-3  d-none d-md-block"></div>
     </div>
   );
 }

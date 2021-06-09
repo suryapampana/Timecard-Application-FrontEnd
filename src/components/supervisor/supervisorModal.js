@@ -16,7 +16,7 @@ export function SupervisorModal() {
       onHide={() => updateRefObj()}
     >
       <Modal.Header closeButton>
-        <Modal.Title>
+        <Modal.Title className="text-primary">
           Hello, {state.supervisor.refsup.supervisorName}
         </Modal.Title>
       </Modal.Header>
@@ -39,7 +39,7 @@ export function SupervisorModal() {
         </ListGroup>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => updateRefObj()}>
+        <Button variant="danger" onClick={() => updateRefObj()}>
           Close
         </Button>
       </Modal.Footer>

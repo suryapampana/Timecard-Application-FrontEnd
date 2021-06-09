@@ -13,7 +13,9 @@ export function TimecardModal() {
   return (
     <Modal show={state.timecard.reftc.timeCardId} onHide={() => updateRefObj()}>
       <Modal.Header closeButton>
-        <Modal.Title>Hello, {state.employee.refemp.employeeId}</Modal.Title>
+        <Modal.Title className="text-primary">
+          Hello, {state.employee.refemp.employeeId}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ListGroup>
@@ -33,7 +35,7 @@ export function TimecardModal() {
         </ListGroup>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => updateRefObj()}>
+        <Button variant="danger" onClick={() => updateRefObj()}>
           Close
         </Button>
       </Modal.Footer>

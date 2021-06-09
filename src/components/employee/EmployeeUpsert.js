@@ -118,109 +118,119 @@ export function EmployeeUpsert() {
   };
 
   return (
-    <div className="row">
-      <div className="col-3 col-md-3 d-none d-md-block"></div>
-      <div className="col-12 col-md-6">
-        <h3 className="alert alert-secondary">
-          {state.employee.refemp.employeeId
-            ? "Update Employee"
-            : "Create Employee"}
-        </h3>
+    <div className="container">
+      <div className="row">
+        <div className="col-3 col-md-3 d-none d-md-block"></div>
+        <div className="col-12 col-md-6">
+          <h3 className="alert alert-primary text-secondary mb-1">
+            {state.employee.refemp.employeeId
+              ? "Update Employee"
+              : "Create Employee"}
+          </h3>
 
-        {/** BELOW THESE TWO TAGS MUST BE CONDITIOANL */}
-        {successOperation && (
-          <div className="alert alert-success">Opeation Success</div>
-        )}
+          {/** BELOW THESE TWO TAGS MUST BE CONDITIOANL */}
+          {successOperation && (
+            <div className="alert alert-success">Employee Created</div>
+          )}
 
-        <form ref={formEL} className="needs-validation" noValidate>
-          <div className="mb-1">
-            <input
-              type="text"
-              value={employeeName}
-              onChange={(e) => updateEmployeeName(e)}
-              className="form-control"
-              placeholder="Enter Employee Name"
-              required
-              minLength="3"
-              maxLength="15"
-            />
-          </div>
+          <div className="card-body"></div>
 
-          <div className="mb-1">
-            <input
-              type="text"
-              value={employeeRole}
-              onChange={(e) => updateEmployeeRole(e)}
-              className="form-control"
-              placeholder="Enter Employee Role"
-              required
-            />
-          </div>
-
-          <div className="mb-1">
-            <input
-              type="email"
-              value={employeeEmail}
-              onChange={(e) => updateEmployeeEmail(e)}
-              className="form-control"
-              placeholder="Enter Email"
-            />
-          </div>
-
-          <div className="mb-1">
-            <input
-              type="number"
-              value={phoneNumber}
-              onChange={(e) => updatePhoneNumber(e)}
-              className="form-control"
-              placeholder="Enter Mobile"
-              max="9999999999"
-              required
-            />
-          </div>
-
-          <div className="mb-1">
-            <input
-              type="text"
-              value={userId}
-              onChange={(e) => updateUserId(e)}
-              className="form-control"
-              placeholder="Enter UserId"
-              required
-            />
-          </div>
-
-          <div className="mb-1">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => updatePassword(e)}
-              className="form-control"
-              placeholder="Enter Password"
-              required
-            />
-          </div>
-
-          <div className="mb-1">
-            {state.employee.refemp.employeeId ? (
+          <form ref={formEL} className="needs-validation" noValidate>
+            <div className="mb-1 form-group">
+              <label> Employee Name: </label>
               <input
-                type="button"
-                className="btn btn-secondary w-100"
-                value="Update Employee"
-                onClick={() => updateEmployee()}
+                type="text"
+                value={employeeName}
+                onChange={(e) => updateEmployeeName(e)}
+                className="form-control"
+                placeholder="Enter Employee Name"
+                required={true}
+                minLength="3"
+                maxLength="15"
               />
-            ) : (
+            </div>
+
+            <div className="mb-1 form-group">
+              <label> Employee Role: </label>
               <input
-                type="button"
-                className="btn btn-secondary w-100"
-                value="Add Employee"
-                onClick={(e) => addEmployee(e)}
+                placeholder="Employee Role"
+                className="form-control"
+                value={employeeRole}
+                onChange={(e) => updateEmployeeRole(e)}
+                required={true}
               />
-            )}
-          </div>
-        </form>
+            </div>
+
+            <div className="mb-1 form-group">
+              <label> Email Id: </label>
+              <input
+                type="email"
+                value={employeeEmail}
+                onChange={(e) => updateEmployeeEmail(e)}
+                className="form-control"
+                placeholder="Enter Email"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1 form-group">
+              <label> Mobile Number: </label>
+              <input
+                type="number"
+                value={phoneNumber}
+                onChange={(e) => updatePhoneNumber(e)}
+                className="form-control"
+                placeholder="Enter Mobile"
+                max="9999999999"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1 form-group">
+              <label> User Id: </label>
+              <input
+                type="text"
+                value={userId}
+                onChange={(e) => updateUserId(e)}
+                className="form-control"
+                placeholder="Enter UserId"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1 form-group">
+              <label> Password: </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => updatePassword(e)}
+                className="form-control"
+                placeholder="Enter Password"
+                required={true}
+              />
+            </div>
+
+            <div className="mb-1">
+              {state.employee.refemp.employeeId ? (
+                <input
+                  type="button"
+                  className="btn btn-success w-100"
+                  value="Update Employee"
+                  onClick={() => updateEmployee()}
+                />
+              ) : (
+                <input
+                  type="button"
+                  className="btn btn-success w-100"
+                  value="Add Employee"
+                  onClick={(e) => addEmployee(e)}
+                />
+              )}
+            </div>
+          </form>
+        </div>
+        <div className="col-3 col-md-3  d-none d-md-block"></div>
       </div>
-      <div className="col-3 col-md-3  d-none d-md-block"></div>
     </div>
   );
 }
