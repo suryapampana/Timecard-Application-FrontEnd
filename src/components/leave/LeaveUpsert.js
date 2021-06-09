@@ -92,6 +92,9 @@ export function LeaveUpsert() {
         </div>
 
         <div className="mb-1">
+          <label htmlFor="validationCustom02" className="text-secondary">
+            From-Date
+          </label>
           <input
             type="date"
             value={fromDate}
@@ -102,22 +105,15 @@ export function LeaveUpsert() {
         </div>
 
         <div className="mb-1">
+          <label htmlFor="validationCustom02" className="text-secondary">
+            To-Date
+          </label>
           <input
             type="date"
             value={toDate}
             onChange={(e) => updateToDate(e)}
             className="form-control"
             placeholder="Enter To Date"
-          />
-        </div>
-
-        <div className="mb-1">
-          <input
-            type="status"
-            value={status}
-            onChange={(e) => updateStatus(e)}
-            className="form-control"
-            placeholder="Enter Status"
           />
         </div>
 

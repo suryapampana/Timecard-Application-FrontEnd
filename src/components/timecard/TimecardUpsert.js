@@ -101,6 +101,9 @@ export function TimecardUpsert() {
         </div>
 
         <div className="mb-1">
+          <label htmlFor="validationCustom02" className="text-secondary">
+            DATE
+          </label>
           <input
             type="date"
             value={date}
@@ -111,6 +114,9 @@ export function TimecardUpsert() {
         </div>
 
         <div className="mb-1">
+          <label htmlFor="validationCustom02" className="text-secondary">
+            ENTRY-TIME
+          </label>
           <input
             type="time"
             value={timeEntry}
@@ -121,22 +127,15 @@ export function TimecardUpsert() {
         </div>
 
         <div className="mb-1">
+          <label htmlFor="validationCustom02" className="text-secondary">
+            EXIT-TIME
+          </label>
           <input
             type="time"
             value={timeExit}
             onChange={(e) => updateTimeExit(e)}
             className="form-control"
             placeholder="Enter Time Exit"
-          />
-        </div>
-
-        <div className="mb-1">
-          <input
-            type="status"
-            value={status}
-            onChange={(e) => updateStatus(e)}
-            className="form-control"
-            placeholder="Enter Status"
           />
         </div>
 

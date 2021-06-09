@@ -111,6 +111,10 @@ export function AttendanceUpsert() {
         </div>
 
         <div className="mb-1">
+          {" "}
+          <label htmlFor="validationCustom02" className="text-secondary">
+            IN-TIME
+          </label>
           <input
             type="time"
             value={inTime}
@@ -121,6 +125,10 @@ export function AttendanceUpsert() {
         </div>
 
         <div className="mb-1">
+          {" "}
+          <label htmlFor="validationCustom02" className="text-secondary">
+            OUT-TIME
+          </label>
           <input
             type="time"
             value={offTime}
@@ -131,6 +139,10 @@ export function AttendanceUpsert() {
         </div>
 
         <div className="mb-1">
+          {" "}
+          <label htmlFor="validationCustom02" className="text-secondary">
+            FROM-DATE
+          </label>
           <input
             type="date"
             value={fromDate}
@@ -141,21 +153,16 @@ export function AttendanceUpsert() {
         </div>
 
         <div className="mb-1">
+          {" "}
+          <label htmlFor="validationCustom02" className="text-secondary ">
+            TO-DATE
+          </label>
           <input
             type="date"
             value={toDate}
             onChange={(e) => updateToDate(e)}
             className="form-control"
             placeholder="Enter To Date"
-          />
-        </div>
-        <div className="mb-1">
-          <input
-            type="status"
-            value={status}
-            onChange={(e) => updateStatus(e)}
-            className="form-control"
-            placeholder="Enter Status"
           />
         </div>
 
