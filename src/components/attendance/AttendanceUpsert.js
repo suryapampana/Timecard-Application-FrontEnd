@@ -1,37 +1,48 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { applyLeaveAction, updateLeaveAction } from "../redux/LeaveReducer";
+import {
+  addAttendanceAction,
+  updateAttendanceAction,
+} from "../../redux/AttendanceReducer";
 
-export function LeaveUpsert() {
+export function AttendanceUpsert() {
   const dispatch = useDispatch();
   const history = useHistory();
   const state = useSelector((state) => state);
   console.log(state);
 
-  const [employeeId, setEmployeeId] = useState(state.leave.reflev.employeeId);
-  const [fromDate, setFromDate] = useState(state.leave.reflev.fromDate);
-  const [toDate, setToDate] = useState(state.leave.reflev.toDate);
-  const [status, setStatus] = useState(state.leave.reflev.status);
+  const [employeeId, setEmployeeId] = useState(
+    state.attendance.refatt.employeeId
+  );
+  const [inTime, setInTime] = useState(state.attendance.refatt.inTime);
+  const [offTime, setOffTime] = useState(state.attendance.refatt.offTime);
+  const [fromDate, setFromDate] = useState(state.attendance.refatt.fromDate);
+  const [toDate, setToDate] = useState(state.attendance.refatt.toDate);
+  const [status, setStatus] = useState(state.attendance.refatt.status);
 
   const [successOperation, setSuccessOperation] = useState(false);
   const [errorOperation, setErrorOperation] = useState(false);
 
   const updateEmployeeId = (e) => setEmployeeId(e.target.value);
+  const updateInTime = (e) => setInTime(e.target.value);
+  const updateOffTime = (e) => setOffTime(e.target.value);
   const updateFromDate = (e) => setFromDate(e.target.value);
   const updateToDate = (e) => setToDate(e.target.value);
   const updateStatus = (e) => setStatus(e.target.value);
 
-  const applyLeave = (e) => {
+  const addAttendance = (e) => {
     e.preventDefault();
-    console.log(employeeId, fromDate, toDate, status);
+    console.log(employeeId, inTime, offTime, fromDate, toDate, status);
 
     // THIS IS REDUX ACTION CALLING
     dispatch(
-      applyLeaveAction({
+      addAttendanceAction({
         employeeId,
-        toDate,
+        inTime,
+        offTime,
         fromDate,
+        toDate,
         status,
       })
     );
@@ -45,16 +56,20 @@ export function LeaveUpsert() {
 
     // reset the form
     setEmployeeId("");
+    setInTime("");
+    setOffTime("");
     setFromDate("");
     setToDate("");
     setStatus("");
   };
 
-  const updateLeave = () => {
+  const updateAttendance = () => {
     dispatch(
-      updateLeaveAction({
-        leaveId: state.leave.reflev.leaveId,
+      updateAttendanceAction({
+        attendanceId: state.attendance.refatt.attendanceId,
         employeeId,
+        inTime,
+        offTime,
         fromDate,
         toDate,
         status,
@@ -63,6 +78,8 @@ export function LeaveUpsert() {
 
     // reset the form
     setEmployeeId("");
+    setInTime("");
+    setOffTime("");
     setFromDate("");
     setToDate("");
     setStatus("");
@@ -73,7 +90,9 @@ export function LeaveUpsert() {
       <div className="col-3 col-md-3 d-none d-md-block"></div>
       <div className="col-12 col-md-6">
         <h3 className="alert alert-secondary">
-          {state.leave.reflev.leaveId ? "Update Leave" : "Apply Leave"}
+          {state.attendance.refatt.attendanceId
+            ? "Update Attendance"
+            : "Add Attendance"}
         </h3>
 
         {/** BELOW THESE TWO TAGS MUST BE CONDITIOANL */}
@@ -87,7 +106,27 @@ export function LeaveUpsert() {
             value={employeeId}
             onChange={(e) => updateEmployeeId(e)}
             className="form-control"
-            placeholder="Enter Employee Id"
+            placeholder="Enter Employee ID"
+          />
+        </div>
+
+        <div className="mb-1">
+          <input
+            type="time"
+            value={inTime}
+            onChange={(e) => updateInTime(e)}
+            className="form-control"
+            placeholder="Enter In Time"
+          />
+        </div>
+
+        <div className="mb-1">
+          <input
+            type="time"
+            value={offTime}
+            onChange={(e) => updateOffTime(e)}
+            className="form-control"
+            placeholder="Enter Off Time"
           />
         </div>
 
@@ -110,7 +149,6 @@ export function LeaveUpsert() {
             placeholder="Enter To Date"
           />
         </div>
-
         <div className="mb-1">
           <input
             type="status"
@@ -122,19 +160,19 @@ export function LeaveUpsert() {
         </div>
 
         <div className="mb-1">
-          {state.leave.reflev.leaveId ? (
+          {state.attendance.refatt.attendanceId ? (
             <input
               type="button"
               className="btn btn-secondary w-100"
-              value="Update Leave"
-              onClick={() => updateLeave()}
+              value="Update Attendance"
+              onClick={() => updateAttendance()}
             />
           ) : (
             <input
               type="button"
               className="btn btn-secondary w-100"
-              value="Apply Leave"
-              onClick={(e) => applyLeave(e)}
+              value="Add Attendance"
+              onClick={(e) => addAttendance(e)}
             />
           )}
         </div>

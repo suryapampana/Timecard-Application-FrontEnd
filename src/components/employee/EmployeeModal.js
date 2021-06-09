@@ -1,6 +1,6 @@
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRefEmployee } from "../redux/EmployeeReducer";
+import { updateRefEmployee } from "../../redux/EmployeeReducer";
 
 export function EmployeeModal() {
   const state = useSelector((state) => state);

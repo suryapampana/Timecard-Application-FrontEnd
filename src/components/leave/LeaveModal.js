@@ -1,6 +1,6 @@
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRefLeave } from "../redux/LeaveReducer";
+import { updateRefLeave } from "../../redux/LeaveReducer";
 
 export function LeaveModal() {
   const state = useSelector((state) => state);

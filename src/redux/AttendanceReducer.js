@@ -2,7 +2,7 @@ const initState = {
   list: [],
 
   refatt: {},
-  sampleList: ["Delhi", "Kolkata", "Chennai", "Mumbai", "Agra", "Bamgalore"],
+  sampleList: ["Sai", "Karim", "Satya", "Surya", "Sunil", "Ramji"],
 };
 
 // ACTION TYPES

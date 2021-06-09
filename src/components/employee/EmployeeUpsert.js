@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import {
   createEmployeeAction,
   updateEmployeeAction,
-} from "../redux/EmployeeReducer";
+} from "../../redux/EmployeeReducer";
 
 export function EmployeeUpsert() {
   const dispatch = useDispatch();

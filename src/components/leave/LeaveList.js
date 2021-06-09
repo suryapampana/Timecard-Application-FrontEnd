@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import {
-  deleteAttendanceAction,
-  getAllAttendanceAction,
-  getByIdAttendanceAction,
-  updateRefAttendance,
-} from "../redux/AttendanceReducer";
-import { AttendanceModal } from "./AttendanceModal";
+  deleteLeaveAction,
+  getAllLeaveAction,
+  getByIdLeaveAction,
+  updateRefLeave,
+} from "../../redux/LeaveReducer";
+import { LeaveModal } from "./LeaveModal";
 
-export function AttendanceList() {
+export function LeaveList() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -19,26 +19,26 @@ export function AttendanceList() {
 
   // Used to Initialize :: READ THE DATA FROM API
   useEffect(() => {
-    dispatch(getAllAttendanceAction());
+    dispatch(getAllLeaveAction());
   }, []);
 
-  const deleteAttendance = (item, index) => {
-    dispatch(deleteAttendanceAction(item));
+  const deleteLeave = (item, index) => {
+    dispatch(deleteLeaveAction(item));
 
     setSuccessOperation(true);
     setTimeout(() => setSuccessOperation(false), 2000);
   };
 
-  const updateAttendance = (item) => {
+  const updateLeave = (item) => {
     // we are doing this so that we can access this objec in the form page
-    dispatch(updateRefAttendance(item));
+    dispatch(updateRefLeave(item));
 
     // form page
-    history.push("/add-attendance");
+    history.push("/apply-leave");
   };
 
-  const getAttendanceById = (item) => {
-    dispatch(getByIdAttendanceAction(item));
+  const getLeaveById = (item) => {
+    dispatch(getByIdLeaveAction(item));
   };
 
   return (
@@ -46,7 +46,7 @@ export function AttendanceList() {
       <div className="row">
         <div className="col-3 col-md-2 d-none d-md-block"></div>
         <div className="col-12 col-md-8">
-          <h3 className="alert alert-secondary">Attendance List</h3>
+          <h3 className="alert alert-secondary">Leave List</h3>
 
           {successOperation && (
             <div className="alert alert-success">Opeation Success</div>
@@ -55,10 +55,8 @@ export function AttendanceList() {
           <table className="table">
             <thead className="thead-dark">
               <tr>
-                <th scope="col">ATTENDANCE-ID</th>
+                <th scope="col">LEAVE-ID</th>
                 <th scope="col">EMPLOYEE-ID</th>
-                <th scope="col">IN-TIME</th>
-                <th scope="col">OFF-TIME</th>
                 <th scope="col">FROM-DATE</th>
                 <th scope="col">TO-DATE</th>
                 <th scope="col">STATUS</th>
@@ -66,26 +64,24 @@ export function AttendanceList() {
               </tr>
             </thead>
             <tbody>
-              {[...state.attendance.list].map((item, index) => (
+              {[...state.leave.list].map((item, index) => (
                 <tr key={index}>
-                  <th scope="row">{item.attendanceId}</th>
+                  <th scope="row">{item.leaveId}</th>
                   <td>{item.employeeId}</td>
-                  <td>{item.inTime}</td>
-                  <td>{item.offTime}</td>
                   <td>{item.fromDate}</td>
                   <td>{item.toDate}</td>
                   <td>{item.status}</td>
                   <td>
                     <input
                       type="button"
-                      onClick={() => getAttendanceById(item, index)}
+                      onClick={() => getLeaveById(item, index)}
                       value="Detail"
                       className="btn btn-link"
                     />
                     /
                     <input
                       type="button"
-                      onClick={() => updateAttendance(item, index)}
+                      onClick={() => updateLeave(item, index)}
                       value="Edit"
                       className="btn btn-link"
                     />
@@ -93,7 +89,7 @@ export function AttendanceList() {
                     <input
                       type="button"
                       value="Delete"
-                      onClick={() => deleteAttendance(item, index)}
+                      onClick={() => deleteLeave(item, index)}
                       className="btn btn-link text-danger"
                     />
                   </td>
@@ -104,9 +100,8 @@ export function AttendanceList() {
         </div>
         <div className="col-3 col-md-2 d-none d-md-block"></div>
       </div>
-
-      {/** Attendance MODAL */}
-      <AttendanceModal />
+      {/** LEAVE MODAL */}
+      <LeaveModal />
     </>
   );
 }

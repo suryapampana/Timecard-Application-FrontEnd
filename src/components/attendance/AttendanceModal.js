@@ -1,6 +1,6 @@
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRefAttendance } from "../redux/AttendanceReducer";
+import { updateRefAttendance } from "../../redux/AttendanceReducer";
 
 export function AttendanceModal() {
   const state = useSelector((state) => state);

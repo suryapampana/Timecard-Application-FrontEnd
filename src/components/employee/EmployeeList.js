@@ -6,7 +6,7 @@ import {
   getAllEmployeeAction,
   getByIdEmployeeAction,
   updateRefEmployee,
-} from "../redux/EmployeeReducer";
+} from "../../redux/EmployeeReducer";
 import { EmployeeModal } from "./EmployeeModal";
 
 export function EmployeeList() {
