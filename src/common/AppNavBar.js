@@ -11,6 +11,10 @@ export function AppNavBar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-dark" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="m-auto">
+          <Link to="/home">
+            <Nav.Link href="#home" Home></Nav.Link>
+          </Link>
+
           <NavDropdown title="Employee" id="nav-dropdown" className="nav-light">
             <NavDropdown.Item
               eventKey="4.1"

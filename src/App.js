@@ -14,6 +14,7 @@ import { SupervisorList } from "./components/supervisor/SupervisorList";
 
 import { Nav, Navbar } from "react-bootstrap";
 import { AppNavBar } from "./common/AppNavBar";
+import Home from "./components/main/Home";
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
       <AppNavBar />
 
       <Switch>
+        <Route path="/home">
+          <Home />
+        </Route>
+
         <Route path="/create-employee">
           <EmployeeUpsert />
         </Route>
