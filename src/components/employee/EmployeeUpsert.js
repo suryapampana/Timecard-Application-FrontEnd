@@ -1,6 +1,8 @@
+import { Button } from "react-bootstrap";
 import { useRef, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   createEmployeeAction,
   updateEmployeeAction,
@@ -226,6 +228,16 @@ export function EmployeeUpsert() {
                   onClick={(e) => addEmployee(e)}
                 />
               )}
+            </div>
+            <div>
+              <Button
+                className="bttn btn-success  mt-2 w-100"
+                as={Link}
+                to="/employee-login"
+                onClick={() => history.push("/employee-login")}
+              >
+                LogIn
+              </Button>
             </div>
           </form>
         </div>

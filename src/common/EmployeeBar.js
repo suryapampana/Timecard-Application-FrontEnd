@@ -2,11 +2,11 @@ import { Carousel, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { NavDropdown } from "react-bootstrap";
 
-export function AppNavBar() {
+export function EmployeeBar() {
   return (
     <Navbar bg="dark" expand="lg" variant="dark" className="navbar sticky-top ">
-      <Navbar.Brand as={Link} to="/" className="text-white">
-        TIME SHEET MANAGEMENT
+      <Navbar.Brand as={Link} to="/employee-dashboard" className="text-white">
+        Employee Dashboard
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-dark" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -15,27 +15,9 @@ export function AppNavBar() {
             <Nav.Link href="#home">Home</Nav.Link>
           </Link>
 
-          <NavDropdown title="Employee" id="nav-dropdown" className="nav-light">
-            <NavDropdown.Item
-              eventKey="4.1"
-              as={Link}
-              to="/create-employee"
-              className="pl-2"
-              style={{ color: "tomato" }}
-            >
-              Create Employee
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item
-              eventKey="4.2"
-              as={Link}
-              to="/list-employee"
-              className="pl-2"
-            >
-              Employee List
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-          </NavDropdown>
+          <Link to="/list-employee">
+            <Nav.Link href="#listemployee">Employee List</Nav.Link>
+          </Link>
 
           <NavDropdown
             title="Leave"
@@ -111,32 +93,6 @@ export function AppNavBar() {
               className="pl-2"
             >
               TimeCard List
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-          </NavDropdown>
-
-          <NavDropdown
-            title="Supervisor"
-            id="nav-dropdown"
-            className="color-primary"
-          >
-            <NavDropdown.Item
-              eventKey="4.1"
-              as={Link}
-              to="/create-supervisor"
-              className="pl-2"
-              style={{ color: "tomato" }}
-            >
-              Create Supervisor
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item
-              eventKey="4.2"
-              as={Link}
-              to="/list-supervisor"
-              className="pl-2"
-            >
-              Supervisor List
             </NavDropdown.Item>
             <NavDropdown.Divider />
           </NavDropdown>

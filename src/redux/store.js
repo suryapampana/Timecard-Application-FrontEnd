@@ -4,6 +4,7 @@ import { createStore } from "redux";
 import thunk from "redux-thunk";
 
 import { AttendanceReducer } from "./AttendanceReducer";
+import { EmployeeLoginReducer } from "./EmployeeLoginReducer";
 import { EmployeeReducer } from "./EmployeeReducer";
 import { LeaveReducer } from "./LeaveReducer";
 import { SupervisorReducer } from "./SupervisorReducer";
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   leave: LeaveReducer,
   timecard: TimecardReducer,
   supervisor: SupervisorReducer,
+  employeeLogin: EmployeeLoginReducer,
   //depart : DepartRducer,
   //vechil: VechuileReucer
 });

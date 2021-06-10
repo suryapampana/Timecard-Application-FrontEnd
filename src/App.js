@@ -15,14 +15,22 @@ import { SupervisorList } from "./components/supervisor/SupervisorList";
 import { Nav, Navbar } from "react-bootstrap";
 import { AppNavBar } from "./common/AppNavBar";
 import Home from "./components/main/Home";
+import Profile from "./components/main/Profile";
+import { EmployeeDashboard } from "./components/main/EmployeeDashboard";
+import { EmployeeBar } from "./common/EmployeeBar";
+import { EmployeeLogin } from "./components/main/EmployeeLogin";
 
 function App() {
   return (
     <Router>
-      <AppNavBar />
-
       <Switch>
+        <Route path="/employee-dashboard">
+          <EmployeeBar />
+          <EmployeeDashboard />
+        </Route>
+
         <Route path="/home">
+          <EmployeeBar />
           <Home />
         </Route>
 
@@ -31,6 +39,7 @@ function App() {
         </Route>
 
         <Route path="/list-employee">
+          <EmployeeBar />
           <EmployeeList />
         </Route>
 
@@ -43,31 +52,41 @@ function App() {
         </Route>
 
         <Route path="/add-attendance">
+          <EmployeeBar />
           <AttendanceUpsert />
         </Route>
 
         <Route path="/list-attendance">
+          <EmployeeBar />
           <AttendanceList />
         </Route>
 
         <Route path="/apply-leave">
+          <EmployeeBar />
           <LeaveUpsert />
         </Route>
 
         <Route path="/list-leave">
+          <EmployeeBar />
           <LeaveList />
         </Route>
 
         <Route path="/add-timecard">
+          <EmployeeBar />
           <TimecardUpsert />
         </Route>
 
         <Route path="/list-timecard">
+          <EmployeeBar />
           <TimecardList />
         </Route>
 
+        <Route path="/profile/:id" exact component={Profile}></Route>
+
+        <Route path="/employee-login" exact component={EmployeeLogin}></Route>
+
         <Route exact path="/">
-          <EmployeeList />
+          <EmployeeLogin />
         </Route>
       </Switch>
     </Router>

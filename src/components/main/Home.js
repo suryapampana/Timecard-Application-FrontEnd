@@ -2,9 +2,12 @@ const Home = () => {
   return (
     <div className="container">
       <div className="py-4 text-center">
-        <h3 style={{ color: "dark" }}>
+        <h2
+          style={{ color: "dark" }}
+          className="d-flex justify-content: center align-item:center  "
+        >
           Welcome Time Card Application and Take Your Attendance from any where
-        </h3>
+        </h2>
       </div>
     </div>
   );
