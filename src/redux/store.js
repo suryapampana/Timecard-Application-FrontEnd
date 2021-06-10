@@ -7,6 +7,7 @@ import { AttendanceReducer } from "./AttendanceReducer";
 import { EmployeeLoginReducer } from "./EmployeeLoginReducer";
 import { EmployeeReducer } from "./EmployeeReducer";
 import { LeaveReducer } from "./LeaveReducer";
+import { SupervisorLoginReducer } from "./SupervisorLoginReducer";
 import { SupervisorReducer } from "./SupervisorReducer";
 import { TimecardReducer } from "./TimecardReducer";
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   timecard: TimecardReducer,
   supervisor: SupervisorReducer,
   employeeLogin: EmployeeLoginReducer,
+  supervisorLogin: SupervisorLoginReducer,
   //depart : DepartRducer,
   //vechil: VechuileReucer
 });

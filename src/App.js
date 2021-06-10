@@ -19,6 +19,9 @@ import Profile from "./components/main/Profile";
 import { EmployeeDashboard } from "./components/main/EmployeeDashboard";
 import { EmployeeBar } from "./common/EmployeeBar";
 import { EmployeeLogin } from "./components/main/EmployeeLogin";
+import { SupervisorLogin } from "./components/main/SupervisorLogin";
+import { StartUp } from "./components/main/StartUp";
+import { SupervisorDashboard } from "./components/main/SupervisorDashboard";
 
 function App() {
   return (
@@ -27,6 +30,11 @@ function App() {
         <Route path="/employee-dashboard">
           <EmployeeBar />
           <EmployeeDashboard />
+        </Route>
+
+        <Route path="/supervisor-dashboard">
+          <EmployeeBar />
+          <SupervisorDashboard />
         </Route>
 
         <Route path="/home">
@@ -85,8 +93,16 @@ function App() {
 
         <Route path="/employee-login" exact component={EmployeeLogin}></Route>
 
+        <Route path="/start-up" exact component={StartUp}></Route>
+
+        <Route
+          path="/supervisor-login"
+          exact
+          component={SupervisorLogin}
+        ></Route>
+
         <Route exact path="/">
-          <EmployeeLogin />
+          <StartUp />
         </Route>
       </Switch>
     </Router>

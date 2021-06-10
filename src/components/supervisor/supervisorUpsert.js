@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
+import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   createSupervisorAction,
   updateSupervisorAction,
@@ -205,6 +206,17 @@ export function SupervisorUpsert() {
                   onClick={(e) => addSupervisor(e)}
                 />
               )}
+            </div>
+
+            <div>
+              <Button
+                className="bttn btn-success  mt-2 w-100"
+                as={Link}
+                to="/supervisor-login"
+                onClick={() => history.push("/supervisor-login")}
+              >
+                LogIn
+              </Button>
             </div>
           </form>
         </div>
