@@ -15,13 +15,13 @@ import { SupervisorList } from "./components/supervisor/SupervisorList";
 import { Nav, Navbar } from "react-bootstrap";
 import { AppNavBar } from "./common/AppNavBar";
 import Home from "./components/main/Home";
-import Profile from "./components/main/Profile";
-import { EmployeeDashboard } from "./components/main/EmployeeDashboard";
+
 import { EmployeeBar } from "./common/EmployeeBar";
 import { EmployeeLogin } from "./components/main/EmployeeLogin";
 import { SupervisorLogin } from "./components/main/SupervisorLogin";
 import { StartUp } from "./components/main/StartUp";
 import { SupervisorDashboard } from "./components/main/SupervisorDashboard";
+import { EmployeeDashboard } from "./components/main/EmployeeDashboard";
 
 function App() {
   return (
@@ -56,6 +56,7 @@ function App() {
         </Route>
 
         <Route path="/list-supervisor">
+          <EmployeeBar />
           <SupervisorList />
         </Route>
 
@@ -88,8 +89,6 @@ function App() {
           <EmployeeBar />
           <TimecardList />
         </Route>
-
-        <Route path="/profile/:id" exact component={Profile}></Route>
 
         <Route path="/employee-login" exact component={EmployeeLogin}></Route>
 

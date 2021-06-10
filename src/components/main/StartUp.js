@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 export const StartUp = () => {
   const history = useHistory();
   return (
-    <body className="bg-light ">
+    <body className="bg-light image ">
       <div>
         <h1
           className=" p-5"
@@ -11,20 +11,21 @@ export const StartUp = () => {
             textAlign: "center",
             fontFamily: "-moz-initial",
             fontStyle: "initial",
-            color: "blueviolet",
+            color: "blue",
           }}
         >
           TIMECARD APPLICATION
         </h1>
       </div>
-      <div className="bg-secondary variant-dark">
+
+      <div>
         <h3
           className=" p-2 m-1"
           style={{
             textAlign: "center",
             fontFamily: "-moz-initial",
             fontStyle: "initial",
-            color: "yellowgreen",
+            color: "tomato",
           }}
         >
           Select Your Role
@@ -37,7 +38,7 @@ export const StartUp = () => {
           fontFamily: "-moz-initial",
           fontStyle: "initial",
         }}
-        className="bg-white"
+        //  className="bg-white"
       >
         <button
           className="bttn btn-primary rounded varient-light m-5 p-3"
@@ -70,3 +71,4 @@ export const StartUp = () => {
     </body>
   );
 };
+//className="bg-secondary variant-dark"

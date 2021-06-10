@@ -10,13 +10,13 @@ export function EmployeeBar() {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-dark" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="m-auto">
-          <Link to="/home">
-            <Nav.Link href="#home">Home</Nav.Link>
-          </Link>
-
+        <Nav className="ml-auto">
           <Link to="/list-employee">
             <Nav.Link href="#listemployee">Employee List</Nav.Link>
+          </Link>
+
+          <Link to="/list-supervisor">
+            <Nav.Link href="#listsupervisor">SupervisorList</Nav.Link>
           </Link>
 
           <NavDropdown
@@ -96,6 +96,12 @@ export function EmployeeBar() {
             </NavDropdown.Item>
             <NavDropdown.Divider />
           </NavDropdown>
+
+          <Link to="/start-up">
+            <Nav.Link className="text-danger" href="#startup">
+              Sign Out
+            </Nav.Link>
+          </Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
