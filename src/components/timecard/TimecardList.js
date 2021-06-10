@@ -68,7 +68,7 @@ export function TimecardList() {
               {[...state.timecard.list].map((item, index) => (
                 <tr key={index}>
                   <th scope="row">{item.timeCardId}</th>
-                  <td>{item.employeeId}</td>
+                  <td>{item.employee.employeeId}</td>
                   <td>{item.date}</td>
                   <td>{item.timeEntry}</td>
                   <td>{item.timeExit}</td>

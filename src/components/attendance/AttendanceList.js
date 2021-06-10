@@ -71,7 +71,7 @@ export function AttendanceList() {
               {[...state.attendance.list].map((item, index) => (
                 <tr key={index}>
                   <th scope="row">{item.attendanceId}</th>
-                  <td>{item.employeeId}</td>
+                  <td>{item.employee.employeeId}</td>
                   <td>{item.inTime}</td>
                   <td>{item.offTime}</td>
                   <td>{item.fromDate}</td>

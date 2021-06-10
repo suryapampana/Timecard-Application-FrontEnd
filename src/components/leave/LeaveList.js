@@ -67,7 +67,7 @@ export function LeaveList() {
               {[...state.leave.list].map((item, index) => (
                 <tr key={index}>
                   <th scope="row">{item.leaveId}</th>
-                  <td>{item.employeeId}</td>
+                  <td>{item.employee.employeeId}</td>
                   <td>{item.fromDate}</td>
                   <td>{item.toDate}</td>
                   <td>{item.status}</td>
