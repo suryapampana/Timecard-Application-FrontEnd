@@ -82,13 +82,13 @@ export function TimecardList() {
                       className="btn btn-link"
                     />
                     /
-                    <input
-                      type="button"
+                    {/* <input
+                     type="button"
                       onClick={() => updateTimecard(item, index)}
                       value="Edit"
                       className="btn btn-link"
                     />
-                    /
+                    / */}
                     <input
                       type="button"
                       value="Delete"

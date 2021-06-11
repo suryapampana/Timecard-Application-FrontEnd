@@ -6,11 +6,15 @@ export function EmployeeBar() {
   return (
     <Navbar bg="dark" expand="lg" variant="dark" className="navbar sticky-top ">
       <Navbar.Brand as={Link} to="/employee-dashboard" className="text-white">
-        Employee Dashboard
+        Dashboard
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-dark" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
+          <Link to="/create-employee">
+            <Nav.Link href="#createemployee"> Add Employee</Nav.Link>
+          </Link>
+
           <Link to="/list-employee">
             <Nav.Link href="#listemployee">Employee List</Nav.Link>
           </Link>

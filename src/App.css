@@ -2,6 +2,13 @@
   background-image: url(./images/Timecardbg.jpeg);
 }
 
+.startup {
+  text-align: "center";
+  font-family: "-moz-initial";
+  font-style: "initial";
+  color: "tomato";
+}
+
 .App {
   text-align: center;
 }

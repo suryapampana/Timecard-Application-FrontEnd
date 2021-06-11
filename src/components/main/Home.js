@@ -6,7 +6,8 @@ const Home = () => {
           style={{ color: "dark" }}
           className="d-flex justify-content: center align-item:center  "
         >
-          Welcome Time Card Application and Take Your Attendance from any where
+          Welcome To Time Card Application and Take Your Attendance from any
+          where
         </h2>
       </div>
     </div>

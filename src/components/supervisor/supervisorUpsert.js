@@ -56,7 +56,7 @@ export function SupervisorUpsert() {
     } else {
       // you can write custom valiadation logic here.
       // username :: Speical Character validation
-      const re = /^[a-z0-9_\.]+$/;
+      const re = /^[A-Za-z0-9_\.]+$/;
       if (!re.test(userId)) {
         alert("Username Vlidation Fails");
         return;
