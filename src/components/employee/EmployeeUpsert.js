@@ -209,6 +209,8 @@ export function EmployeeUpsert() {
                 className="form-control"
                 placeholder="Enter Password"
                 required={true}
+                minLength="8"
+                maxLength="15"
               />
             </div>
 
